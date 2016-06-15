@@ -6,6 +6,8 @@ POC
 - run npm install && npm run test-server
 - goto localhost:3000/sandbox 
 
+## HTML
+
 ```
   <body>
 
@@ -31,4 +33,31 @@ POC
   ...
 
   </body>
+```
+
+## ViewModel code
+
+```
+function ViewModel() {
+  this.action = function(time) {
+    console.log('execute!!');
+    this.timeFromYou = time;
+  };
+  this.init = function() {
+    this.time = Date.now();
+    setInterval(() => {
+      this.time = Date.now();
+    }, 1000)
+  };
+}
+
+register(function() {
+  var viewModel = new ViewModel(),;
+
+  viewModel.init();
+
+  return {
+    viewModel: viewModel
+  };
+});
 ```
