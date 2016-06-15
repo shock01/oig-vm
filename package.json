@@ -1,0 +1,28 @@
+{
+  "name": "oig-vm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test-server": "node test-runner/runner.js",
+    "test": "karma start --singleRun",
+    "posttest": "jshint lib/vm.js test/vmSpec.js",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "connect": "^3.4.0",
+    "coveralls": "^2.11.6",
+    "jshint": "^2.9.1",
+    "karma": "^0.13.19",
+    "karma-coverage": "^0.5.3",
+    "karma-mocha": "^0.2.1",
+    "karma-mocha-reporter": "^1.1.5",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "livereload": "^0.4.0",
+    "mocha": "^2.3.4",
+    "serve-static": "^1.10.0"
+  }
+}

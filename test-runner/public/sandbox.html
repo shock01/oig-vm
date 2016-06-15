@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sandbox</title>
+</head>
+<body>
+  <style>
+  oig-view {
+    display:block;
+  }
+
+  </style>
+  <oig-view scripts="/viewmodel.js" plugins="handlebars" name="myView">
+    <template>
+      <div>
+        <button onclick="myView.action({{time}})">Click Me 1</button>
+        <button onclick="myView.action('Yeah')">Click Me 2</button>
+        <b>{{time}} rendered by a mad mans implementation</b>
+        <br>
+        <i>Time from you{{timeFromYou}}</i>
+      </div>
+    </template>
+  </oig-view>
+
+  <oig-view scripts="/viewmodel.js" plugins="handlebars" name="myView">
+    <template>
+      <div>
+        <button onclick="myView.action({{time}})">Click Me 1</button>
+        <i>From you: {{timeFromYou}}</i>
+      </div>
+    </template>
+  </oig-view>
+
+  <div id="time"></div>
+  <script>
+  var time;
+  setInterval(() => {
+    time = Date.now();
+    document.getElementById('time').innerHTML = Date.now();
+  }, 0)
+
+  false && setInterval(() => {
+    var element = document.querySelector('oig-view');
+    document.body.appendChild(element.cloneNode(true));
+    element.parentNode.removeChild(element);
+  }, 1000)
+  </script>
+
+
+  <script>
+    document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+  </script>
+  <script src="../../lib/dr.js"></script>
+  <script src="../../lib/vm.js"></script>
+</body>
+</html>
