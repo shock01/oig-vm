@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <title>Mocha Tests</title>
-  <link href="../../node_modules/mocha/mocha.css" rel="stylesheet" />
+  <link href="../node_modules/mocha/mocha.css" rel="stylesheet" />
 </head>
 <body>
   <div id="mocha"></div>
-  <script src="../../node_modules/mocha/mocha.js"></script>
-  <script src="../../node_modules/chai/chai.js"></script>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/chai/chai.js"></script>
 
   <script>mocha.setup('bdd')</script>
-  <!-- lib -->
-  <script src="../../lib/vm.js"></script>
+  <script src="../src/script/index.js"></script>
+  <script src="../src/worker/index.js"></script>
   <!-- test -->
-  <script src="../../test/vmSpec.js"></script>
+  <script src="../test/vmSpec.js"></script>
   <script>
     mocha.run();
   </script>

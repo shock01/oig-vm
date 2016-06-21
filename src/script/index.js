@@ -1,24 +1,12 @@
-(function (root, factory) {
-  // define a global plugins config
-  'use strict';
-  /* istanbul ignore next */
-  if (typeof define === 'function' && define.amd) {
-    define(factory);
-  } else if (typeof module === 'object' && module.exports) {
-    module.exports = factory();
-  } else {
-    root.OIGVM = factory();
-  }
-} (this, function () {
-  'use strict';
   const views = new Set();
   let workerScript;
 
   // get a reference to the worker script
+  // to unit test move this out and call it on bootstrap or when factory is called
   (function () {
     var scripts = document.getElementsByTagName('script'),
       script = scripts[scripts.length - 1];
-    workerScript = script.src.substring(0, script.src.lastIndexOf('/') + 1) + 'worker.js';
+    workerScript = script.src.substring(0, script.src.lastIndexOf('/') + 1) + 'vm-worker.js';
   } ())
 
   // send a pause to the webworker to stop the intervals and resume will call render
@@ -85,9 +73,9 @@
                 current,
                 element = template ? template.nextElementSibling : this.firstElementChild;
               if (!element) {
-                this.insertAdjacentHTML('beforeend', data.html);
+                this.insertAdjacentHTML('beforeend', data.content);
               } else {
-                this.domRenderer.render(data.html, element);
+                this.domRenderer.render(data.content, element);
               }
             });
           }
@@ -134,7 +122,3 @@
       }
     })
   });
-
-  var factory = function () { };
-  return factory;
-}));
